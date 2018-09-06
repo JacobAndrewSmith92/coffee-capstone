@@ -31,7 +31,7 @@ class Roaster(models.Model):
     city = models.CharField(max_length=100, blank=True)
     state = models.CharField(max_length=2, blank=True)
     zipcode = models.CharField(max_length=5, blank=True)
-    farm = models.ForeignKey(CoffeeFarm, on_delete=models.CASCADE, null=True)
+    farm = models.ManyToManyField(CoffeeFarm)
 
     def __str__(self):
 
@@ -56,7 +56,10 @@ class BrewingMethod(models.Model):
 
 class CustomerRoast(models.Model):
     brewing_method = models.ForeignKey(BrewingMethod, on_delete=models.CASCADE, null=True)
-    roast = models.ForeignKey(Roast, on_delete=models.CASCADE, null=True)
+    roast = models.ManyToManyField(Roast)
+
+    def __str__(self):
+        return f'Roast: {self.roast.name} Brewed:{self.brewing_method.name}'
 
 class CustomerBrewing(models.Model):
     # Brew Calculator will need to add water and bloom amounts to model
@@ -66,6 +69,9 @@ class CustomerBrewing(models.Model):
     coffee = models.PositiveSmallIntegerField()
     bloom = models.PositiveSmallIntegerField(blank=True)
     water = models.PositiveSmallIntegerField(blank=True)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
+    method = models.ForeignKey(BrewingMethod, on_delete=models.CASCADE, null=True)
+    roast = models.ForeignKey(Roast, on_delete=models.CASCADE, null=True)
 
 
     def __str__(self):
