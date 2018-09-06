@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'website/navbar.css' %}">
+
+
+    <nav class="navbar">
+        <a href="{% url 'website:index' %}">Home</a>
+
+        {% comment %}
+        <input type="search" placeholder="Search">
+        <a href="{% url 'website:product_types' %}">All Products</a>
+        <a href="{% url 'website:sell_a_products' %}">Sell A Product</a>
+        <a href="{% url 'website:notifications' %}">Notifications</a>
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+            <button class="dropbtn">My Account</button>
+        <div class="dropdown_nav">
+            <a href="{% url 'website:account_home' %}">My Account</a>
+            <div class="dropdown_content">
+                <a href="{% url 'website:my_products' %}">My Products</a>
+                <a href="{% url 'website:order_history' %}">Order History</a>
+            </div>
+        </div>
+        {% endcomment %}
+        {% if user.is_authenticated %}
+        <a href="{% url 'website:payment_list' %}">Payment</a>
+        <a href="{% url 'website:account_home' %}">My Account</a>
+        <a href="{% url 'website:logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'website:login' %}">Login/Register</a>
+        {% endif %}
+    </nav>
+
+    {% block cool %} {% endblock %}
