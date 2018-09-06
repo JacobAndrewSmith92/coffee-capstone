@@ -7,8 +7,9 @@
 </head>
 
 <body>
-    {% block main %} {% include "nav_bar.html" with nav_location=view.location %} {% endblock main %}
+    {% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
     <h1>Welcome to Brew!</h1>
+    {% block button %} {% endblock %}
 
 </body>
 

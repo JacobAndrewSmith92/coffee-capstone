@@ -44,7 +44,7 @@ class Roast(models.Model):
 
     def __str__(self):
 
-        return f'Roast: {self.name} Roaster: {self.roaster.name}'
+        return f'{self.name} by {self.roaster.name}'
 
 
 class BrewingMethod(models.Model):
@@ -59,7 +59,7 @@ class CustomerRoast(models.Model):
     roast = models.ManyToManyField(Roast)
 
     def __str__(self):
-        return f'Roast: {self.roast.name} Brewed:{self.brewing_method.name}'
+        return f'Made with a {self.brewing_method.name}'
 
 class CustomerBrewing(models.Model):
     # Brew Calculator will need to add water and bloom amounts to model
