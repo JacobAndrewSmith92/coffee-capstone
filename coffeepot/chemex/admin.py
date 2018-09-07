@@ -1,4 +1,6 @@
 from django.contrib import admin
+
+
 from .models import Customer, CoffeeFarm, Roaster, Roast, BrewingMethod, CustomerBrewing, CustomerRoast, CoffeeShop
 
 
@@ -11,3 +13,4 @@ admin.site.register(BrewingMethod)
 admin.site.register(CustomerRoast)
 admin.site.register(CustomerBrewing)
 admin.site.register(CoffeeShop)
+
