@@ -1,0 +1,11 @@
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+<h6>User Form</h6>
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+<button type="submit">Register</button>
+
+{% endblock %}
