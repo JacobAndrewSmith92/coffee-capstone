@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'chemex/main.css' %}">
 <html>
 
 <head>
@@ -8,6 +11,7 @@
 
 <body>
     {% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
+    
     <h1>Welcome to Brew!</h1>
     <div><a href="{% url 'brew_calculator' %}">Brew Calculator</a></div>
     <div><a href="{% url 'coffee_tracker' %}">Coffee Tracker</a></div>

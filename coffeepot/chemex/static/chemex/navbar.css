@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+}
+
+
+.flex--container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: gray;
+    height: 40px;
+}
+
+.flex--title {
+    margin: 15px;
+}
+
+.flex--auth {
+    margin: 15px;
+}
+
+.flex--title > a {
+    color: white;
+}
+.flex--auth > a {
+    color: white;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
