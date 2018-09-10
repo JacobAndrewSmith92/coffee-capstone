@@ -8,5 +8,6 @@ class FavoriteRoast(forms.ModelForm):
     class Meta:
 
         model = Roast
-        fields = ('name', 'roaster')
+        fields = ('name', 'roaster', 'user',)
+
 

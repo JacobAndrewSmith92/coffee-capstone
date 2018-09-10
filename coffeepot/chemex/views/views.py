@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from chemex.models import UserRoast
+from chemex.models import Roast
 from django.views.generic import TemplateView, CreateView, ListView, FormView
 from chemex.forms import UserCreateForm, FavoriteRoast
 from django.urls import reverse_lazy
@@ -24,7 +24,7 @@ class BrewCalculatorView(TemplateView):
 
 class BrewHistoryView(ListView):
 
-    model = UserRoast
+    model = Roast
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
