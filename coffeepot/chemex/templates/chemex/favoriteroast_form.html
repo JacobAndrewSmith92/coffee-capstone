@@ -1,0 +1,9 @@
+
+{% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
+
+<h4>Fill out the information below:</h4>
+<form method="POST" class='add-roast'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Save</button>
+</form>

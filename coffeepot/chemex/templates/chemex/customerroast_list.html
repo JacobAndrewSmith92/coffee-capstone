@@ -12,7 +12,13 @@
         <div><a href="{% url 'brew_history' %}">Brew History</a></div>
         <div><a href="{% url 'favorite_roaster' %}">Favorite Roaster</a></div>
     </div>
-    <div>Brew History Tab</div>
+
+
+    {% for brew in customerroast_list %}
+    <div>{{brew}}</div>
+    {% endfor %}
+
+
     <div><a href="{% url 'coffee_tracker' %}">Back</a></div>
     {% block button %} {% endblock %}
 

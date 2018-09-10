@@ -11,11 +11,13 @@
 
 <body>
     {% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
-    
+
     <h1>Welcome to Brew!</h1>
     <div><a href="{% url 'brew_calculator' %}">Brew Calculator</a></div>
+    {% if user.is_authenticated %}
     <div><a href="{% url 'coffee_tracker' %}">Coffee Tracker</a></div>
     {% block button %} {% endblock %}
+    {% endif %}
 
 </body>
 

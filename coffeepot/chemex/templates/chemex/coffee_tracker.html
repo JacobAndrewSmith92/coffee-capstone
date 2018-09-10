@@ -4,16 +4,28 @@
 <head>
     <meta charset="utf-8">
     <title>Brew</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'chemex/tracker.css' %}">
 </head>
 
 <body>
     {% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
     <div>
-        <div><a href="{% url 'brew_history' %}">Brew History</a></div>
-        <div><a href="{% url 'favorite_roaster' %}">Favorite Roaster</a></div>
+        <div>
+            <a href="{% url 'brew_history' %}">Brew History</a>
+        </div>
     </div>
-    <div>Coffee Tracker Tab</div>
-    <div><a href="{% url 'index' %}">Back</a></div>
+    <div class="dropdown">
+        <span>Add A Favorite</span>
+        <div class="dropdown-content">
+            <div><a href="{% url 'favorite_roaster' %}">Roaster</a></div>
+            <div><a href="{% url 'favorite_roast' %}">Roast</a></div>
+            <div><a href="">BrewingMethod</a></div>
+        </div>
+    </div>
+    <div>
+        <a href="{% url 'index' %}">Back</a>
+    </div>
     {% block button %} {% endblock %}
 
 </body>

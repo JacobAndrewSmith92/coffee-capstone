@@ -9,8 +9,7 @@
 <body>
     {% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
     <div>
-            <div><a href="{% url 'brew_history' %}">Brew History</a></div>
-            <div><a href="{% url 'favorite_roaster' %}">Favorite Roaster</a></div>
+        <div><a href="{% url 'brew_history' %}">Brew History</a></div>
     </div>
     <div>Favorite Roaster Tab</div>
     <div><a href="{% url 'coffee_tracker' %}">Back</a></div>
