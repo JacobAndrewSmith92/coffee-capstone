@@ -39,6 +39,7 @@ class Roaster(models.Model):
 
 
 class Roast(models.Model):
+    user = models.ManyToManyField(User)
     name = models.CharField(max_length=100, blank=True)
     roaster = models.ForeignKey(Roaster, on_delete=models.CASCADE, null=True)
 
@@ -65,17 +66,17 @@ class UserBrewingMethod(models.Model):
 
         return self.brewing_method
 
-class UserRoast(models.Model):
-    """Joining table so customer can save their favorite roast on their profile
-        Author: jacob smith
-    """
+# class UserRoast(models.Model):
+#     """Joining table so customer can save their favorite roast on their profile
+#         Author: jacob smith
+#     """
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    roast = models.ForeignKey(Roast, on_delete=models.CASCADE, null=True)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+#     roast = models.ForeignKey(Roast, on_delete=models.CASCADE, null=True)
 
-    def __str__(self):
+#     def __str__(self):
 
-        return self.roast
+#         return self.roast
 
 class CustomerBrewing(models.Model):
     # Brew Calculator will need to add water and bloom amounts to model
