@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Brew</title>
+    </head>
+
+<body>
+    {% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
+
+<div>Favorite Brewing Method</div>
+<form method="POST" class='add-method'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Save</button>
+</form>
+
+    <div><a href="{% url 'coffee_tracker' %}">Back</a></div>
+    {% block button %} {% endblock %}
+
+</body>
+
+</html>
