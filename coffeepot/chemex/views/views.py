@@ -39,7 +39,8 @@ class RoastFormView(FormView):
     template_name = 'chemex/favoriteroast_form.html'
 
     def form_valid(self, form):
-        form.save()
+        f = form.save()
+        f.user.add(self.request.user)
         return super(RoastFormView, self).form_valid(form)
 
 
