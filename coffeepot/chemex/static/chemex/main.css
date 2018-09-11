@@ -1,0 +1,34 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.main--container {
+    display: flex;
+    justify-content: space-around;
+    margin: 10% 10% 0 10%;
+}
+
+.left--item {
+    border: 1px solid gray;
+    padding: 20px;
+}
+
+.right--item {
+    border: 1px solid gray;
+    padding: 20px;
+}
+
+.left--item:hover {
+    background-color: lightgrey;
+}
+
+.right--item:hover {
+    background-color: lightgrey;
+}
+
+.more--info {
+    margin-top: 5%;
+    background-color: lightgrey;
+    height: 100vh;
+}

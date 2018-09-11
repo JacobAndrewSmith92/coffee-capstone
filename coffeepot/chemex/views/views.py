@@ -10,9 +10,13 @@ class IndexView(TemplateView):
     template_name = 'chemex/index.html'
 
 
-class TrackerView(TemplateView):
+class TrackerView(ListView):
+    model = Roast
     template_name = 'chemex/coffee_tracker.html'
+    context_object_name = 'roast_list'
 
+    def queryset(self):
+        return Roast.objects.filter(user=self.request.user)
 
 
 
@@ -40,6 +44,7 @@ class RoastFormView(FormView):
         f = form.save()
         f.user.add(self.request.user)
         return super(RoastFormView, self).form_valid(form)
+
 
 class RoasterFormView(FormView):
 

@@ -1,24 +1,19 @@
-<!DOCTYPE html>
 {% load static %}
-
 <link rel="stylesheet" type="text/css" href="{% static 'chemex/main.css' %}">
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <title>Brew</title>
-</head>
-
+<title>Brew</title>
 <body>
     {% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
 
     <h1>Welcome to Brew!</h1>
-    <div><a href="{% url 'brew_calculator' %}">Brew Calculator</a></div>
-    {% if user.is_authenticated %}
-    <div><a href="{% url 'coffee_tracker' %}">Coffee Tracker</a></div>
-    {% block button %} {% endblock %}
-    {% endif %}
+    <div class="main--container">
+        <div class="left--item"><a href="{% url 'brew_calculator' %}">Brew Calculator</a></div>
+        {% if user.is_authenticated %}
+        <div class="right--item"><a href="{% url 'coffee_tracker' %}">Coffee Tracker</a></div>
+        {% block button %} {% endblock %}
+        {% endif %}
+    </div>
+
+    <div class="more--info">Other Coffee information</div>
 
 </body>
-
-</html>
