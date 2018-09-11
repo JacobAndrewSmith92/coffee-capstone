@@ -25,13 +25,13 @@ class CoffeeFarm(models.Model):
 
 
 class Roaster(models.Model):
+    user = models.ManyToManyField(User)
     name = models.CharField(max_length=100, blank=True)
     street = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=20, blank=True)
     city = models.CharField(max_length=100, blank=True)
     state = models.CharField(max_length=2, blank=True)
     zipcode = models.CharField(max_length=5, blank=True)
-    farm = models.ManyToManyField(CoffeeFarm)
 
     def __str__(self):
 
@@ -49,22 +49,13 @@ class Roast(models.Model):
 
 
 class BrewingMethod(models.Model):
+    user = models.ManyToManyField(User)
     name = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
 
         return self.name
 
-class UserBrewingMethod(models.Model):
-    """Joining table so customer can save their favorite brewing method on their profile
-        Author: jacob smith
-    """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    brewing_method = models.ForeignKey(BrewingMethod, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-
-        return self.brewing_method
 
 # class UserRoast(models.Model):
 #     """Joining table so customer can save their favorite roast on their profile
