@@ -12,7 +12,7 @@
     {% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
     <div>
         <div>
-            <a href="{% url 'brew_history' %}">Brew History</a>
+            {% comment %} <a href="{% url 'brew_history' %}">Brew History</a> {% endcomment %}
         </div>
     </div>
     <div class="dropdown">
@@ -23,10 +23,10 @@
             <div><a href="{% url 'favorite_method' %}">BrewingMethod</a></div>
         </div>
     </div>
-    <div>
-        <a href="{% url 'index' %}">Back</a>
-    </div>
-    {% block button %} {% endblock %}
+    <div><a href="{% url 'my_favorites' %}">My Favorites</a></div>
+
+
+
 
 </body>
 

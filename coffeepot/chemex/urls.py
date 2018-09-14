@@ -14,5 +14,9 @@ urlpatterns = [
     path('coffee_tracker/roast/add', views.RoastFormView.as_view(), name='favorite_roast'),
     path('coffee_tracker/method/add', views.BrewingMethodFormView.as_view(), name='favorite_method'),
     path('coffee_tracker/history', views.BrewHistoryView.as_view(), name='brew_history'),
+    path('coffee_tracker/favorites/', views.FavoritesView.as_view(), name='my_favorites'),
+    path('coffee_tracker/favorites/roast', views.MyFavoriteRoast.as_view(), name='fav_roast_list'),
+    path('coffee_tracker/favorites/roasters', views.MyFavoriteRoaster.as_view(), name='fav_roaster_list'),
+    path('coffee_tracker/favorites/methods', views.MyFavoriteMethod.as_view(), name='fav_method_list'),
 
 ]
