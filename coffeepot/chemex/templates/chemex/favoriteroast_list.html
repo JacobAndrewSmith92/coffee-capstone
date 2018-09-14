@@ -1,0 +1,8 @@
+{% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
+<div>My Favorite Roasts</div>
+
+{% for userRoast in roast_list%}
+<h3>{{userRoast.name}}</h3>
+{% endfor %}
+
+{% block button %} {% endblock %}

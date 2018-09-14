@@ -1,1 +1,1 @@
-from .views import IndexView, TrackerView, BrewCalculatorView, BrewHistoryView, SignUpView, RoastFormView, RoasterFormView, BrewingMethodFormView
+from .views import IndexView, TrackerView, BrewCalculatorView, BrewHistoryView, SignUpView, RoastFormView, RoasterFormView, BrewingMethodFormView, FavoritesView, MyFavoriteRoast, MyFavoriteRoaster, MyFavoriteMethod

@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'chemex/main.css' %}">
+
+<title>Brew</title>
+<body>
+    {% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
+
+    <div><a href="{% url 'fav_roast_list' %}">Roasts</a></div>
+    <div><a href="{% url 'fav_roaster_list' %}">Roasters</a></div>
+    <div><a href="{% url 'fav_method_list' %}">Brewing Methods</a></div>
+
+
+
+
+</body>

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from chemex.models import Roast
+from chemex.models import Roast, Roaster, BrewingMethod
 from django.views.generic import TemplateView, CreateView, ListView, FormView
 from chemex.forms import UserCreateForm, FavoriteRoast, FavoriteRoaster, FavoriteBrewingMethod
 from django.urls import reverse_lazy
@@ -10,14 +10,40 @@ class IndexView(TemplateView):
     template_name = 'chemex/index.html'
 
 
-class TrackerView(ListView):
-    model = Roast
+class TrackerView(TemplateView):
     template_name = 'chemex/coffee_tracker.html'
+
+
+"""Favorites Views that will list each favorite for the user. Will save the roast, roaster, and method.
+Author: jacob smith
+
+"""
+class FavoritesView(TemplateView):
+    template_name = 'chemex/myfavorites.html'
+
+class MyFavoriteRoast(ListView):
+    model = Roast
     context_object_name = 'roast_list'
+    template_name = 'chemex/favoriteroast_list.html'
 
     def queryset(self):
         return Roast.objects.filter(user=self.request.user)
 
+class MyFavoriteRoaster(ListView):
+    model = Roaster
+    context_object_name = 'roaster_list'
+    template_name = 'chemex/favoriteroaster_list.html'
+
+    def queryset(self):
+        return Roaster.objects.filter(user=self.request.user)
+
+class MyFavoriteMethod(ListView):
+    model = BrewingMethod
+    context_object_name = 'brewingMethod_list'
+    template_name = 'chemex/favoritemethod_list.html'
+
+    def queryset(self):
+        return BrewingMethod.objects.filter(user=self.request.user)
 
 
 class BrewCalculatorView(TemplateView):
