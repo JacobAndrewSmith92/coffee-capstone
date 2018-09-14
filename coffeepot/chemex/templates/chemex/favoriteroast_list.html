@@ -2,7 +2,9 @@
 <div>My Favorite Roasts</div>
 
 {% for userRoast in roast_list%}
-<h3>{{userRoast.name}}</h3>
+<div class="roast--card">
+    {{userRoast.name}} by {{userRoast.roaster}}
+</div>
 {% endfor %}
 
 {% block button %} {% endblock %}

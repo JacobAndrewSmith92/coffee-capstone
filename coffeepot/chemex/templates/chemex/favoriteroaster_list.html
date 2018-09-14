@@ -2,7 +2,13 @@
 <div>My Favorite Roaster</div>
 
 {% for userRoaster in roaster_list %}
-<h3>{{userRoaster.name}}</h3>
+<div>
+    <h4>{{userRoaster.name}}</h4>
+    <div>{{userRoaster.street}}</div>
+    <div>{{userRoaster.city}}, {{userRoaster.state}}, {{userRoaster.zipcode}}</div>
+    <span>{{userRoaster.phone}}</span>
+
+</div>
 {% endfor %}
 
 {% block button %} {% endblock %}

@@ -5,6 +5,7 @@ from chemex.models import Roast, Roaster, BrewingMethod
 from django.views.generic import TemplateView, CreateView, ListView, FormView
 from chemex.forms import UserCreateForm, FavoriteRoast, FavoriteRoaster, FavoriteBrewingMethod
 from django.urls import reverse_lazy
+from django import template
 
 class IndexView(TemplateView):
     template_name = 'chemex/index.html'
@@ -100,5 +101,18 @@ class SignUpView(CreateView):
     form_class = UserCreateForm
     success_url = reverse_lazy('login')
     template_name = 'registration/sign_up.html'
+
+
+register = template.Library()
+
+@register.filter(name='phone_number')
+def phone_number(number):
+    """
+    Convert a 10 character string into (xxx) xxx-xxxx.
+    """
+    first = number[0:3]
+    second = number[3:6]
+    third = number[6:10]
+    return '(' + first + ')' + ' ' + second + '-' + third
 
 
