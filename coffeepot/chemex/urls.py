@@ -16,7 +16,9 @@ urlpatterns = [
     path('coffee_tracker/history', views.BrewHistoryView.as_view(), name='brew_history'),
     path('coffee_tracker/favorites/', views.FavoritesView.as_view(), name='my_favorites'),
     path('coffee_tracker/favorites/roast', views.MyFavoriteRoast.as_view(), name='fav_roast_list'),
-    path('coffee_tracker/favorites/roasters', views.MyFavoriteRoaster.as_view(), name='fav_roaster_list'),
-    path('coffee_tracker/favorites/methods', views.MyFavoriteMethod.as_view(), name='fav_method_list'),
-
+    path('coffee_tracker/update/roast/<int:pk>', views.UpdateFavoriteRoast, name='update_roast'),
+    path('coffee_tracker/favorites/roaster', views.MyFavoriteRoaster.as_view(), name='fav_roaster_list'),
+    path('coffee_tracker/update/roaster/<int:pk>', views.UpdateFavoriteRoaster, name='update_roaster'),
+    path('coffee_tracker/favorites/method', views.MyFavoriteMethod.as_view(), name='fav_method_list'),
+    path('coffee_tracker/update/method/<int:pk>', views.UpdateFavoriteMethod, name='update_method'),
 ]

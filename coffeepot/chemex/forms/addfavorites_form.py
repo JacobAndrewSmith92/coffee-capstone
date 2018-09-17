@@ -1,7 +1,10 @@
 from django import forms
 from chemex.models import Roast, Roaster, BrewingMethod
 
-
+"""
+Forms in this view will be used to render new forms and update existing ones
+author: jacob smith
+"""
 
 class FavoriteRoast(forms.ModelForm):
 
@@ -21,7 +24,7 @@ class FavoriteBrewingMethod(forms.ModelForm):
         model = BrewingMethod
         fields = ('name',)
 
-    
+
 
 
 

@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from chemex.models import Roast, Roaster, BrewingMethod
-from django.views.generic import TemplateView, CreateView, ListView, FormView
-from chemex.forms import UserCreateForm, FavoriteRoast, FavoriteRoaster, FavoriteBrewingMethod
+from django.views.generic import TemplateView, CreateView, ListView, FormView, UpdateView
 from django.urls import reverse_lazy
+from django import template
+
+from chemex.models import Roast, Roaster, BrewingMethod
+from chemex.forms import UserCreateForm, FavoriteRoast, FavoriteRoaster, FavoriteBrewingMethod
 
 class IndexView(TemplateView):
     template_name = 'chemex/index.html'
@@ -29,6 +31,18 @@ class MyFavoriteRoast(ListView):
     def queryset(self):
         return Roast.objects.filter(user=self.request.user)
 
+def UpdateFavoriteRoast(request, pk):
+    roast = get_object_or_404(Roast, pk=pk)
+    if request.method == 'POST':
+        form = FavoriteRoast(request.POST, instance=roast)
+        roast = form.save(commit=False)
+        roast.save()
+        return redirect('/coffee_tracker/favorites/roast', pk=roast.pk)
+    else:
+        form = FavoriteRoast(instance=roast)
+    return render(request, 'update/roast_update_form.html', {'form': form})
+
+
 class MyFavoriteRoaster(ListView):
     model = Roaster
     context_object_name = 'roaster_list'
@@ -37,6 +51,18 @@ class MyFavoriteRoaster(ListView):
     def queryset(self):
         return Roaster.objects.filter(user=self.request.user)
 
+def UpdateFavoriteRoaster(request, pk):
+    roaster = get_object_or_404(Roaster, pk=pk)
+    if request.method == 'POST':
+        form = FavoriteRoaster(request.POST, instance=roaster)
+        roaster = form.save(commit=False)
+        roaster.save()
+        return redirect('/coffee_tracker/favorites/roaster', pk=roaster.pk)
+    else:
+        form = FavoriteRoaster(instance=roaster)
+    return render(request, 'update/roaster_update_form.html', {'form': form})
+
+
 class MyFavoriteMethod(ListView):
     model = BrewingMethod
     context_object_name = 'brewingMethod_list'
@@ -44,6 +70,17 @@ class MyFavoriteMethod(ListView):
 
     def queryset(self):
         return BrewingMethod.objects.filter(user=self.request.user)
+
+def UpdateFavoriteMethod(request, pk):
+    method = get_object_or_404(BrewingMethod, pk=pk)
+    if request.method == 'POST':
+        form = FavoriteBrewingMethod(request.POST, instance=method)
+        method = form.save(commit=False)
+        method.save()
+        return redirect('/coffee_tracker/favorites/method', pk=method.pk)
+    else:
+        form = FavoriteBrewingMethod(instance=method)
+    return render(request, 'update/method_update_form.html', {'form': form})
 
 
 class BrewCalculatorView(TemplateView):
@@ -100,5 +137,18 @@ class SignUpView(CreateView):
     form_class = UserCreateForm
     success_url = reverse_lazy('login')
     template_name = 'registration/sign_up.html'
+
+
+register = template.Library()
+
+@register.filter(name='phone_number')
+def phone_number(number):
+    """
+    Convert a 10 character string into (xxx) xxx-xxxx.
+    """
+    first = number[0:3]
+    second = number[3:6]
+    third = number[6:10]
+    return '(' + first + ')' + ' ' + second + '-' + third
 
 
