@@ -7,6 +7,7 @@
     <div>{{userRoaster.street}}</div>
     <div>{{userRoaster.city}}, {{userRoaster.state}}, {{userRoaster.zipcode}}</div>
     <span>{{userRoaster.phone}}</span>
+    <div><a href="{% url 'update_roaster' pk=userRoaster.pk %}">Update</a></div>
 
 </div>
 {% endfor %}
