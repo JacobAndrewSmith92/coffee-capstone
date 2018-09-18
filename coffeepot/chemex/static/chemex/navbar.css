@@ -7,8 +7,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(50, 50, 50, .25);
-    height: 40px;
     /* box-shadow: 100px 100px green; */
 }
 
@@ -24,7 +22,7 @@
     color: black;
 }
 .flex--auth > a {
-    color: white;
+    color: black;
 }
 
 a:link {

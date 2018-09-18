@@ -5,6 +5,9 @@
     <div class="flex--container">
         <span class="flex--title">
             <a href="{% url 'index' %}"> Brew</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'coffee_tracker' %}">Coffee Tracker</a>
+        {% endif %}
         </span>
         <span class="flex--auth">
             {% if user.is_authenticated %}

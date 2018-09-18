@@ -2,6 +2,7 @@
 h1 {
     display: flex;
     justify-content: center;
+    color: white;
 }
 
 .main--container {
@@ -48,6 +49,14 @@ h1 {
     color: black;
 }
 
+.main--words {
+    position: absolute;
+    bottom: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+}
+
 .words {
     position: absolute;
     top: 50%;
@@ -64,5 +73,16 @@ h1 {
 .footer--content {
     height: 100px;
     width: 100%;
-    background-color: red;
+    background-color: lightgrey;
+    display: flex;
+    justify-content: center;
+}
+
+.login {
+    color: red;
+}
+
+.image--logo {
+    width: 75px;
+    height: 75px;
 }
