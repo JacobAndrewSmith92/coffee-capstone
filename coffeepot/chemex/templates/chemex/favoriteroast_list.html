@@ -3,7 +3,9 @@
 
 {% for userRoast in roast_list%}
 <div class="roast--card">
-    {{userRoast.name}} by {{userRoast.roaster}} <a href="{% url 'update_roast' pk=userRoast.pk %}">Update</a>
+    {{userRoast.name}} by {{userRoast.roaster}} <a href="{% url 'update_roast' pk=userRoast.pk %}">Update</a><a href="{% url 'delete_roast' pk=userRoast.pk %}">Delete</a>
+
+
 </div>
 
 {% endfor %}

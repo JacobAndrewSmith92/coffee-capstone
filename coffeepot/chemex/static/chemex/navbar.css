@@ -7,8 +7,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: gray;
+    background: rgba(50, 50, 50, .25);
     height: 40px;
+    /* box-shadow: 100px 100px green; */
 }
 
 .flex--title {
@@ -20,7 +21,7 @@
 }
 
 .flex--title > a {
-    color: white;
+    color: black;
 }
 .flex--auth > a {
     color: white;

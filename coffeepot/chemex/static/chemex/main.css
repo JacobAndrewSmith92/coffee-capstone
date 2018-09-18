@@ -1,3 +1,4 @@
+
 h1 {
     display: flex;
     justify-content: center;
@@ -29,6 +30,39 @@ h1 {
 
 .more--info {
     margin-top: 5%;
-    background-color: lightgrey;
-    height: 15px;
+}
+
+.image--1 {
+    width: 120%;
+    height: 75%;
+}
+
+.image--2 {
+    width: 100%;
+    height: 50%;
+}
+
+.words--container {
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+.words {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+.words2 {
+    position: absolute;
+    top: 60%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+
+.footer--content {
+    height: 100px;
+    width: 100%;
+    background-color: red;
 }

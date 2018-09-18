@@ -4,17 +4,25 @@
 <title>Brew</title>
 <body>
     {% block nav %} {% include "chemex/nav_bar.html" with nav_location=view.location %}{% endblock %}
+    {% load static %} <img class="image--2" src="{% static 'images/coffee2.jpg' %}" alt="test"/>
 
     <h1>Welcome to Brew!</h1>
     <div class="main--container">
-        <div class="left--item"><a href="{% url 'brew_calculator' %}">Brew Calculator</a></div>
         {% if user.is_authenticated %}
         <div class="right--item"><a href="{% url 'coffee_tracker' %}">Coffee Tracker</a></div>
+        {% else %}
+        <div>Login to track your brews</div>
         {% block button %} {% endblock %}
         {% endif %}
     </div>
 
-    <div class="more--info">Other Coffee information</div>
-    
+    <div class="more--info">Other Coffee information
+        <div class="words--container">
+            {% load static %} <img class="image--1" src="{% static 'images/coffee1.png' %}" alt="test"/>
+            <span class="words">Join Brew today to keep track and save all of your favorites.</span>
+            <span class="words2">See and share different coffees with other brewers!</span>
+        </div>
+    </div>
+    <footer class="footer--content">This is the footer</footer>
 </body>
 

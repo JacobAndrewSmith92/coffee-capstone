@@ -8,20 +8,31 @@ from django import template
 from chemex.models import Roast, Roaster, BrewingMethod
 from chemex.forms import UserCreateForm, FavoriteRoast, FavoriteRoaster, FavoriteBrewingMethod
 
+
+"""Home page for the application
+"""
+
 class IndexView(TemplateView):
     template_name = 'chemex/index.html'
 
+"""Coffee tracker view is the view that a majority of the app takes place. It will help navigate to all your favorites and adding new favorites along the way.
+author: jacob smith
+"""
 
 class TrackerView(TemplateView):
     template_name = 'chemex/coffee_tracker.html'
 
 
 """Favorites Views that will list each favorite for the user. Will save the roast, roaster, and method.
-Author: jacob smith
+author: jacob smith
 
 """
 class FavoritesView(TemplateView):
     template_name = 'chemex/myfavorites.html'
+
+"""The three methods below list all the roasts that a user has and updating those if they want to.
+author: jacob smith
+"""
 
 class MyFavoriteRoast(ListView):
     model = Roast
@@ -42,6 +53,14 @@ def UpdateFavoriteRoast(request, pk):
         form = FavoriteRoast(instance=roast)
     return render(request, 'update/roast_update_form.html', {'form': form})
 
+def DeleteRoast(request, pk):
+    roast = get_object_or_404(Roast, pk=pk)
+    roast.delete()
+    return redirect('/coffee_tracker/favorites/roast')
+
+"""The three methods below list all the roasters that a user has and updating those if they want to.
+author: jacob smith
+"""
 
 class MyFavoriteRoaster(ListView):
     model = Roaster
@@ -62,6 +81,15 @@ def UpdateFavoriteRoaster(request, pk):
         form = FavoriteRoaster(instance=roaster)
     return render(request, 'update/roaster_update_form.html', {'form': form})
 
+def DeleteRoaster(request, pk):
+    roaster = get_object_or_404(Roaster, pk=pk)
+    roaster.delete()
+    return redirect('/coffee_tracker/favorites/roaster')
+
+
+"""The three methods below list all the methods that a user has and updating those if they want to.
+author: jacob smith
+"""
 
 class MyFavoriteMethod(ListView):
     model = BrewingMethod
@@ -82,7 +110,22 @@ def UpdateFavoriteMethod(request, pk):
         form = FavoriteBrewingMethod(instance=method)
     return render(request, 'update/method_update_form.html', {'form': form})
 
+def DeleteMethod(request, pk):
+    method = get_object_or_404(BrewingMethod, pk=pk)
+    method.delete()
+    return redirect('/coffee_tracker/favorites/method')
 
+"""
+
+
+
+
+
+
+
+
+
+"""
 class BrewCalculatorView(TemplateView):
     template_name = 'chemex/brew_calculator.html'
 

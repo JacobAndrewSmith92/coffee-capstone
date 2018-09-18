@@ -17,8 +17,11 @@ urlpatterns = [
     path('coffee_tracker/favorites/', views.FavoritesView.as_view(), name='my_favorites'),
     path('coffee_tracker/favorites/roast', views.MyFavoriteRoast.as_view(), name='fav_roast_list'),
     path('coffee_tracker/update/roast/<int:pk>', views.UpdateFavoriteRoast, name='update_roast'),
+    path('coffee_tracker/delete/roast/<int:pk>', views.DeleteRoast, name='delete_roast'),
     path('coffee_tracker/favorites/roaster', views.MyFavoriteRoaster.as_view(), name='fav_roaster_list'),
     path('coffee_tracker/update/roaster/<int:pk>', views.UpdateFavoriteRoaster, name='update_roaster'),
+    path('coffee_tracker/delete/roaster/<int:pk>', views.DeleteRoaster, name='delete_roaster'),
     path('coffee_tracker/favorites/method', views.MyFavoriteMethod.as_view(), name='fav_method_list'),
     path('coffee_tracker/update/method/<int:pk>', views.UpdateFavoriteMethod, name='update_method'),
+    path('coffee_tracker/delete/method/<int:pk>', views.DeleteMethod, name='delete_method'),
 ]

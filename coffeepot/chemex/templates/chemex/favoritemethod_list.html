@@ -3,7 +3,7 @@
 
 {% for userMethod in brewingMethod_list %}
 <h3>{{userMethod.name}}</h3>
-<div><a href="{% url 'update_method' pk=userMethod.pk %}">Update</a></div>
+<div><a href="{% url 'update_method' pk=userMethod.pk %}">Update</a><a href="{% url 'delete_method' pk=userMethod.pk %}">Delete</a></div>
 
 {% endfor %}
 
